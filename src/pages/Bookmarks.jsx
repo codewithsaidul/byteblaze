@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import { getblog } from "../utility/main";
 import { deleteBlog } from "../utility/main";
+import EmptyState from "../components/EmptyState";
 
 function Bookmarks() {
   const [blogs, setBlogs] = useState([]);
@@ -21,6 +22,16 @@ function Bookmarks() {
       setBlogs(storedBlogs);
    };
 
+
+   if (blogs.length < 1) {
+    return (
+      <EmptyState
+      message="No Bookmarks Founds!"
+      address="/blogs"
+      label="Go To Blogs"
+    ></EmptyState>
+    )
+   }
  
 
   return (
