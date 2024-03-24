@@ -1,11 +1,13 @@
-import { Navbar } from "../components/Navbar"
-
-
-export const Home = () => {
+import Hero from '../components/Hero'
+import Wave from '../assets/wave.svg'
+const Home = () => {
   return (
-    <div>
-        <Navbar/>
-        <h1>Home Page</h1>
+    <div className="flex flex-col relative justify-center items-center min-h-[calc(100vh-116px)]">
+      <Hero />
+
+      <img className='absolute bottom-0 w-full' src={Wave} alt="wave image" />
     </div>
-  )
+  );
 }
+
+export default Home
