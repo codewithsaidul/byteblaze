@@ -1,6 +1,7 @@
 // import { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigation } from "react-router-dom";
 import BlogCard from "../components/BlogCard";
+import Lodader from "../components/Lodader";
 
 
 function Blogs() {
@@ -12,9 +13,11 @@ function Blogs() {
   //     .then((data) => setBlogs(data));
   // }, []);
 
+   const navigation = useNavigation();
+
   const blogs = useLoaderData();
 
-  
+  if (navigation.state === "loading") return <Lodader />;  
   return (
     <section className="dark:bg-gray-100 dark:bg-gray-100 dark:bg-gray-100 py-6 dark:bg-gray-100 dark:text-gray-800 dark:text-gray-800 dark:text-gray-800 dark:text-gray-800">
       <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">

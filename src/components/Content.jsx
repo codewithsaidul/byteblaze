@@ -9,8 +9,6 @@ import rehypeRaw from 'rehype-raw';
 const Content = () => {
     const blog = useLoaderData();
 
-    console.log(blog)
-
     const { cover_image, title, tags, body_html } =
       blog;
 

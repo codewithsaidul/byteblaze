@@ -1,19 +1,24 @@
-
-import { useState } from 'react';
-import { Link, Outlet, useLoaderData } from 'react-router-dom'
+import { useState } from "react";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { MdBookmarkAdd } from "react-icons/md";
 
 function Blog() {
+  const [tabIndex, setTabIndex] = useState(0);
 
-    const [tabIndex, setTabIndex] = useState(0);
-    const blog = useLoaderData();
+  const blog = useLoaderData();
 
-    const {
-      comments_count,
-      title,
-      reading_time_minutes,
-      public_reactions_count,
-      published_at,
-    } = blog;
+  const {
+    comments_count,
+    title,
+    reading_time_minutes,
+    public_reactions_count,
+    published_at,
+  } = blog;
+
+  const handleBookmark = blog => {
+    console.log(blog)
+  }
+
   return (
     <div className="max-w-3xl px-6 py-16 mx-auto space-y-12">
       <article className="space-y-8 dark:bg-gray-100 dark:text-gray-900">
@@ -78,15 +83,16 @@ function Blog() {
             </svg>
             <span>Author</span>
           </Link>
+
+          <div onClick={() => handleBookmark(blog)} className="ml-6 bg-primary p-5 rounded-full hover:bg-opacity-30 bg-opacity-20 cursor-pointer hover:scale-105 overflow-hidden">
+              <MdBookmarkAdd size={24} className="text-secondary"/>
+          </div>
         </div>
       </article>
 
       <Outlet />
-
-      
     </div>
   );
 }
 
-
-export default Blog
+export default Blog;
